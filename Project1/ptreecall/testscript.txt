@@ -1,0 +1,81 @@
+# The following sripts are printed in user space (shell terminal):
+
+root@generic:/data/ptree # ./ptreecall                    
+515030910339 Parent PID = 1135
+515030910339 Child PID = 1136
+Execuating ptree in child process:
+swapper,0,0,0,1,0,0
+	init,1,1,0,45,2,0
+		ueventd,45,1,1,0,62,0
+		logd,62,1,1,0,63,1036
+		vold,63,1,1,0,72,0
+		healthd,72,1,1,0,73,0
+		lmkd,73,1,1,0,74,0
+		servicemanager,74,1,1,0,75,1000
+		surfaceflinger,75,1,1,0,77,1000
+		qemud,77,1,1,0,83,0
+		sh,83,1,1,0,84,2000
+		adbd,84,1,1,1126,85,0
+			sh,1126,1,84,1135,0,0
+				ptreecall,1135,1,1126,1136,0,0
+					ptree,1136,0,1135,0,0,0
+		netd,85,1,1,0,86,0
+		debuggerd,86,1,1,0,87,0
+		rild,87,1,1,0,88,1001
+		drmserver,88,1,1,0,89,1019
+		mediaserver,89,1,1,0,90,1013
+		installd,90,1,1,0,91,0
+		keystore,91,1,1,0,92,1017
+		main,92,1,1,237,93,0
+			system_server,237,1,92,0,488,1000
+			externalstorage,488,1,92,0,660,10006
+			putmethod.latin,660,1,92,0,677,10032
+			m.android.phone,677,1,92,0,682,1001
+			droid.launcher3,682,1,92,0,714,10007
+			d.process.media,714,1,92,0,724,10005
+			d.process.acore,724,1,92,0,789,10002
+			id.printspooler,789,1,92,0,805,10040
+			m.android.music,805,1,92,0,875,10035
+			ndroid.systemui,875,1,92,0,920,10013
+			droid.deskclock,920,1,92,0,949,10023
+			.quicksearchbox,949,1,92,0,964,10042
+			ndroid.settings,964,1,92,0,979,1000
+			ndroid.calendar,979,1,92,0,998,10019
+			viders.calendar,998,1,92,0,1018,10001
+			ndroid.keychain,1018,1,92,0,1039,1000
+			.android.dialer,1039,1,92,0,1056,10004
+			gedprovisioning,1056,1,92,0,1080,10008
+			m.android.email,1080,1,92,0,1095,10027
+			ndroid.exchange,1095,1,92,0,0,10029
+		gatekeeperd,93,1,1,0,96,1000
+		perfprofd,96,1,1,0,97,0
+		fingerprintd,97,1,1,0,0,1000
+	kthreadd,2,1,0,3,0,0
+		ksoftirqd/0,3,1,2,0,6,0
+		khelper,6,1,2,0,7,0
+		sync_supers,7,1,2,0,8,0
+		bdi-default,8,1,2,0,9,0
+		kblockd,9,1,2,0,10,0
+		rpciod,10,1,2,0,11,0
+		kworker/0:1,11,1,2,0,12,0
+		kswapd0,12,1,2,0,13,0
+		fsnotify_mark,13,1,2,0,14,0
+		crypto,14,1,2,0,25,0
+		kworker/u:1,25,1,2,0,30,0
+		mtdblock0,30,1,2,0,35,0
+		mtdblock1,35,1,2,0,40,0
+		mtdblock2,40,1,2,0,41,0
+		binder,41,1,2,0,42,0
+		deferwq,42,1,2,0,43,0
+		kworker/u:2,43,1,2,0,44,0
+		mmcqd/0,44,1,2,0,47,0
+		jbd2/mtdblock0-,47,1,2,0,48,0
+		ext4-dio-unwrit,48,1,2,0,53,0
+		jbd2/mtdblock1-,53,1,2,0,54,0
+		ext4-dio-unwrit,54,1,2,0,55,0
+		kworker/0:2,55,1,2,0,60,0
+		jbd2/mtdblock2-,60,1,2,0,61,0
+		ext4-dio-unwrit,61,1,2,0,69,0
+		kauditd,69,1,2,0,1134,0
+		flush-31:1,1134,1,2,0,0,0
+

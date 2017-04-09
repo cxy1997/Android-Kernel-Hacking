@@ -1,0 +1,20 @@
+Introduction: Burger Buddies Problem
+  Cooks, Cashiers, and Customers are each modeled as a thread.
+  Cashiers sleep until a customer is present.
+  A Customer approaching a cashier can start the order process.
+  A Customer cannot order until the cashier is ready.
+  Once the order is placed, a cashier has to get a burger from the rack.
+  If a burger is not available, a cashier must wait until one is made.
+  The cook will always make burgers and place them on the rack.
+  The cook will wait if the rack is full.
+  There are NO synchronization constraints for a cashier presenting food to the customer.
+
+General Requirement:
+  Source file: BurgerBuddies.c
+  Executable file: BBC
+  Run: BBC #Cooks #Cashiers #Customers #RackSize
+
+Description:
+  This program simulates the operating of this particular burger store, with each character having a corresponding thread. There is also a manager thread which monitors the customers and closes the store after all customers are served.
+
+  Several mutexes and semaphores are used to guarantee that some important resources (e.g., number of burgers on the rack) are accessed only by one thread at each time. Detailss can be found in the code, which has been commented.

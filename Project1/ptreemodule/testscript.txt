@@ -1,0 +1,9 @@
+# The following is printed in kernel space
+
+Module ptree loaded successfully!
+Module ptree removed successfully!
+
+# This demostrates that the module can be loaded and removed successfully.
+
+# The running result of calling ptree is shown in /ptree/testcript.txt
+

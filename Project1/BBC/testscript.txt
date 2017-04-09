@@ -1,0 +1,174 @@
+# Testscript 1:
+root@generic:/data/ptree # ./BBC 2 4 41 10
+Cooks [2], Cashiers [4], Customers [41]
+Begin run.
+Cook [2] makes a burger.
+Cook [1] makes a burger.
+Customer [3] comes.
+Customer [2] comes.
+Customer [1] comes.
+Cashier [1] accepts an order.
+Cashier [1] takes a burger to customer.
+Cook [2] makes a burger.
+Cook [1] makes a burger.
+Customer [4] comes.
+Cashier [4] accepts an order.
+Cashier [4] takes a burger to customer.
+Cashier [3] accepts an order.
+Cashier [3] takes a burger to customer.
+Cashier [2] accepts an order.
+Cashier [2] takes a burger to customer.
+Customer [17] comes.
+Cashier [1] accepts an order.
+Customer [35] comes.
+Customer [22] comes.
+Customer [37] comes.
+Cashier [4] accepts an order.
+Cashier [3] accepts an order.
+Cashier [2] accepts an order.
+Cook [2] makes a burger.
+Cook [1] makes a burger.
+Cashier [1] takes a burger to customer.
+Cashier [4] takes a burger to customer.
+Customer [19] comes.
+Cashier [1] accepts an order.
+Customer [27] comes.
+Cashier [4] accepts an order.
+Cook [2] makes a burger.
+Cook [1] makes a burger.
+Cashier [3] takes a burger to customer.
+Cashier [2] takes a burger to customer.
+Customer [30] comes.
+Cashier [3] accepts an order.
+Customer [31] comes.
+Cashier [2] accepts an order.
+Cook [2] makes a burger.
+Cook [1] makes a burger.
+Cashier [1] takes a burger to customer.
+Cashier [4] takes a burger to customer.
+Customer [39] comes.
+Cashier [1] accepts an order.
+Customer [40] comes.
+Cashier [4] accepts an order.
+Cook [2] makes a burger.
+Cook [1] makes a burger.
+Cashier [3] takes a burger to customer.
+Cashier [2] takes a burger to customer.
+Customer [18] comes.
+Cashier [3] accepts an order.
+Customer [24] comes.
+Cashier [2] accepts an order.
+Cook [2] makes a burger.
+Cashier [1] takes a burger to customer.
+Cook [1] makes a burger.
+Cashier [4] takes a burger to customer.
+Customer [38] comes.
+Cashier [1] accepts an order.
+Customer [41] comes.
+Cashier [4] accepts an order.
+Cook [2] makes a burger.
+Cashier [3] takes a burger to customer.
+Customer [20] comes.
+Cashier [3] accepts an order.
+Cook [1] makes a burger.
+Cashier [2] takes a burger to customer.
+Customer [21] comes.
+Cashier [2] accepts an order.
+Cook [2] makes a burger.
+Cashier [1] takes a burger to customer.
+Customer [23] comes.
+Cashier [1] accepts an order.
+Cook [1] makes a burger.
+Cashier [4] takes a burger to customer.
+Customer [26] comes.
+Cashier [4] accepts an order.
+Cook [2] makes a burger.
+Cashier [3] takes a burger to customer.
+Customer [29] comes.
+Cashier [3] accepts an order.
+Cook [1] makes a burger.
+Cashier [2] takes a burger to customer.
+Customer [34] comes.
+Cashier [2] accepts an order.
+Cook [2] makes a burger.
+Cashier [1] takes a burger to customer.
+Customer [28] comes.
+Cashier [1] accepts an order.
+Cook [1] makes a burger.
+Cashier [4] takes a burger to customer.
+Customer [32] comes.
+Cashier [4] accepts an order.
+Cook [2] makes a burger.
+Cashier [3] takes a burger to customer.
+Customer [33] comes.
+Cashier [3] accepts an order.
+Cook [1] makes a burger.
+Cashier [2] takes a burger to customer.
+Customer [36] comes.
+Cashier [2] accepts an order.
+Cook [2] makes a burger.
+Cashier [1] takes a burger to customer.
+Customer [25] comes.
+Cashier [1] accepts an order.
+Cook [1] makes a burger.
+Cashier [4] takes a burger to customer.
+Customer [16] comes.
+Cashier [4] accepts an order.
+Cook [2] makes a burger.
+Cashier [3] takes a burger to customer.
+Customer [15] comes.
+Cashier [3] accepts an order.
+Cook [1] makes a burger.
+Cashier [2] takes a burger to customer.
+Customer [14] comes.
+Cashier [2] accepts an order.
+Cook [2] makes a burger.
+Cashier [1] takes a burger to customer.
+Customer [13] comes.
+Cashier [1] accepts an order.
+Cook [1] makes a burger.
+Cashier [4] takes a burger to customer.
+Customer [12] comes.
+Cashier [4] accepts an order.
+Cook [2] makes a burger.
+Cashier [3] takes a burger to customer.
+Customer [11] comes.
+Cashier [3] accepts an order.
+Cook [1] makes a burger.
+Cashier [2] takes a burger to customer.
+Customer [10] comes.
+Cashier [2] accepts an order.
+Cook [2] makes a burger.
+Cashier [1] takes a burger to customer.
+Customer [9] comes.
+Cashier [1] accepts an order.
+Cook [1] makes a burger.
+Cashier [4] takes a burger to customer.
+Customer [8] comes.
+Cashier [4] accepts an order.
+Cook [2] makes a burger.
+Cashier [3] takes a burger to customer.
+Customer [7] comes.
+Cashier [3] accepts an order.
+Cook [1] makes a burger.
+Cashier [2] takes a burger to customer.
+Customer [6] comes.
+Cashier [2] accepts an order.
+Cook [2] makes a burger.
+Cashier [1] takes a burger to customer.
+Customer [5] comes.
+Cashier [1] accepts an order.
+Cook [1] makes a burger.
+Cashier [4] takes a burger to customer.
+Cook [2] makes a burger.
+Cashier [3] takes a burger to customer.
+Cook [1] makes a burger.
+Cashier [2] takes a burger to customer.
+Cook [2] makes a burger.
+Cashier [1] takes a burger to customer.
+
+# Testscript 2:
+root@generic:/data/ptree # ./BBC
+Unmatched parameters!
+The correct format should be:
+BBC #Cooks #Cashiers #Customers #RackSize
