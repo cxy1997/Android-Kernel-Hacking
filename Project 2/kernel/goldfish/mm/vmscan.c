@@ -52,6 +52,8 @@
 
 #include "internal.h"
 
+#define PG_REFERENCED_SHRINK_THRESHOLD 2
+
 #define CREATE_TRACE_POINTS
 #include <trace/events/vmscan.h>
 
@@ -215,7 +217,7 @@ static int debug_shrinker_show(struct seq_file *s, void *unused)
 
 	down_read(&shrinker_rwsem);
 	list_for_each_entry(shrinker, &shrinker_list, list) {
-		char name[64];
+		//char name[64];
 		int num_objs;
 
 		num_objs = shrinker->shrink(shrinker, &sc);
@@ -748,11 +750,11 @@ static enum page_references page_check_references(struct page *page,
 						  struct mem_cgroup_zone *mz,
 						  struct scan_control *sc)
 {
-	int referenced_ptes, referenced_page;
-	unsigned long vm_flags;
+	int referenced_ptes;
+	unsigned long vm_flags, referenced_time;
 
 	referenced_ptes = page_referenced(page, 1, mz->mem_cgroup, &vm_flags);
-	referenced_page = TestClearPageReferenced(page);
+	referenced_time = (page->PG_referenced)++;
 
 	/* Lumpy reclaim - ignore references */
 	if (sc->reclaim_mode & RECLAIM_MODE_LUMPYRECLAIM)
@@ -782,9 +784,9 @@ static enum page_references page_check_references(struct page *page,
 		 * so that recently deactivated but used pages are
 		 * quickly recovered.
 		 */
-		SetPageReferenced(page);
+		--(page->PG_referenced);
 
-		if (referenced_page || referenced_ptes > 1)
+		if (referenced_time < 1 || referenced_ptes > 1)
 			return PAGEREF_ACTIVATE;
 
 		/*
@@ -797,7 +799,7 @@ static enum page_references page_check_references(struct page *page,
 	}
 
 	/* Reclaim if clean, defer dirty pages to writeback */
-	if (referenced_page && !PageSwapBacked(page))
+	if (referenced_time < 1 && !PageSwapBacked(page))
 		return PAGEREF_RECLAIM_CLEAN;
 
 	return PAGEREF_RECLAIM;
@@ -1030,6 +1032,7 @@ free_it:
 		 * Is there need to periodically free_page_list? It would
 		 * appear not as the counts should be low
 		 */
+		printk(KERN_INFO "Freeing a page.\n");
 		list_add(&page->lru, &free_pages);
 		continue;
 
@@ -1737,6 +1740,7 @@ static void shrink_active_list(unsigned long nr_to_scan,
 	isolate_mode_t isolate_mode = ISOLATE_ACTIVE;
 	struct zone *zone = mz->zone;
 
+    printk(KERN_INFO "Function shrink_active_list() called!\n");
 	lru_add_drain();
 
 	reset_reclaim_mode(sc);
@@ -1781,6 +1785,7 @@ static void shrink_active_list(unsigned long nr_to_scan,
 			}
 		}
 
+        // Totally nonsense, page_referenced() will always return 0.
 		if (page_referenced(page, 0, mz->mem_cgroup, &vm_flags)) {
 			nr_rotated += hpage_nr_pages(page);
 			/*
@@ -1797,7 +1802,16 @@ static void shrink_active_list(unsigned long nr_to_scan,
 				continue;
 			}
 		}
-
+        
+        ++(page->PG_referenced);
+        if (page->PG_referenced < PG_REFERENCED_SHRINK_THRESHOLD)
+        {
+        	printk(KERN_INFO "Reserve a page with PG_referenced = %lu.\n", page->PG_referenced);
+            list_add(&page->lru, &l_active);
+            continue;
+        }
+        
+        printk(KERN_INFO "De-activating a page!\n");
 		ClearPageActive(page);	/* we are de-activating */
 		list_add(&page->lru, &l_inactive);
 	}
@@ -2643,7 +2657,8 @@ static bool pgdat_balanced(pg_data_t *pgdat, unsigned long balanced_pages,
 {
 	unsigned long present_pages = 0;
 	int i;
-
+    
+    //schedule_timeout(HZ/10);
 	for (i = 0; i <= classzone_idx; i++)
 		present_pages += pgdat->node_zones[i].present_pages;
 
@@ -2747,6 +2762,8 @@ static unsigned long balance_pgdat(pg_data_t *pgdat, int order,
 	struct shrink_control shrink = {
 		.gfp_mask = sc.gfp_mask,
 	};
+	printk(KERN_INFO "Function balance_pgdat() invoked!\n");
+
 loop_again:
 	total_scanned = 0;
 	sc.nr_reclaimed = 0;

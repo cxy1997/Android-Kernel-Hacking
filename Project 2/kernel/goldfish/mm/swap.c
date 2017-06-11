@@ -361,13 +361,9 @@ void activate_page(struct page *page)
  */
 void mark_page_accessed(struct page *page)
 {
-	if (!PageActive(page) && !PageUnevictable(page) &&
-			PageReferenced(page) && PageLRU(page)) {
+	if (!PageActive(page) && !PageUnevictable(page) && PageLRU(page)) 
 		activate_page(page);
-		ClearPageReferenced(page);
-	} else if (!PageReferenced(page)) {
-		SetPageReferenced(page);
-	}
+	page->PG_referenced = 0;
 }
 EXPORT_SYMBOL(mark_page_accessed);
 
@@ -465,7 +461,7 @@ static void lru_deactivate_fn(struct page *page, void *arg)
 	lru = page_lru_base_type(page);
 	del_page_from_lru_list(zone, page, lru + active);
 	ClearPageActive(page);
-	ClearPageReferenced(page);
+	//ClearPageReferenced(page);
 	add_page_to_lru_list(zone, page, lru);
 
 	if (PageWriteback(page) || PageDirty(page)) {

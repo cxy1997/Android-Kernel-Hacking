@@ -117,7 +117,6 @@ struct page {
 #endif
 		};
 	};
-
 	/* Remainder is not double word aligned */
 	union {
 		unsigned long private;		/* Mapping-private opaque data:
@@ -159,6 +158,7 @@ struct page {
 	 */
 	void *shadow;
 #endif
+	unsigned long PG_referenced;
 }
 /*
  * The struct page can be forced to be double word aligned so that atomic ops
